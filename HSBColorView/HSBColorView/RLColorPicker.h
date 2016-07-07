@@ -30,7 +30,7 @@
  *  init the three HSB slider view.
  *
  *  @param color :if color is nil,define is red.
- *  @param rect  :the three slider view rect. And rect's height need >= 28*3 to show all view.
+ *  @param rect  :the three slider view rect. And rect's height need >= 28.0 px *3 to show all view.
  *
  *  @return view
  */
@@ -38,12 +38,12 @@
 
 
 
-#warning bug: something wrong when Hue or Alpha value =0, so do not add alpha slider (lee)
+#warning bug: something wrong when Hue or Alpha value ==0, so do not add alpha slider now(lee)
 /**
  *  init the three HSB slider view contain 'Alpha slider'
  *
  *  @param color :if color is nil,define is red.
- *  @param rect  :the three slider view rect. And rect's height need >= 28*4 to show all view.
+ *  @param rect  :the three slider view rect. And rect's height need >= 28.0 px *4 to show all view.
  *
  *  @return view
  */

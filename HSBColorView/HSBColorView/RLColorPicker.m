@@ -49,17 +49,17 @@
         color = [UIColor colorWithHue:0.01 saturation:1 brightness:1 alpha:1];
     }
     
-    CGFloat sliderHeight = contain? self.frame.size.height/4: self.frame.size.height/3;
+    CGFloat sliderHeight = contain? (self.frame.size.height-10)/4: (self.frame.size.height-10)/3;
     
     slider_h = [[RLHSBSlider alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, sliderHeight) sliderColorType:HSBColorTypeHue withColor:color];
     slider_h.sliderDelegate = self;
     [self addSubview: slider_h];
     
-    slider_s = [[RLHSBSlider alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(slider_h.frame), self.frame.size.width, sliderHeight) sliderColorType:HSBColorTypeSat withColor:color];
+    slider_s = [[RLHSBSlider alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(slider_h.frame) +5, self.frame.size.width, sliderHeight) sliderColorType:HSBColorTypeSat withColor:color];
     slider_s.sliderDelegate = self;
     [self addSubview: slider_s];
     
-    slider_b = [[RLHSBSlider alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(slider_s.frame), self.frame.size.width, sliderHeight) sliderColorType:HSBColorTypeBri withColor:color];
+    slider_b = [[RLHSBSlider alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(slider_s.frame) +5, self.frame.size.width, sliderHeight) sliderColorType:HSBColorTypeBri withColor:color];
     slider_b.sliderDelegate = self;
     [self addSubview: slider_b];
 

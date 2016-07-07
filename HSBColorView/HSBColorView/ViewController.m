@@ -34,7 +34,7 @@
     
     
     UIColor * defineColor = [UIColor colorWithRed:50.f/255.f green:134.f/255.f blue:148.f/255.f alpha:1.0f];
-    colorPicker  = [[RLColorPicker alloc]initWithColor:nil withFrame:CGRectMake(0, 380, self.view.frame.size.width, 150)];
+    colorPicker  = [[RLColorPicker alloc]initWithColor:nil withFrame:CGRectMake(0, 380, self.view.frame.size.width, 180)];
     colorPicker.delegate = self;
     colorPicker.tag = 10000;
     [self.view addSubview:colorPicker];
