@@ -36,12 +36,12 @@ To get color:
 ```
 
 ##Existing bug: 
->When add the alpha slider bar, if the hue or alpha value equle to 0, the other slider bar can not move.
+> When add the alpha slider bar, if the hue or alpha value equle to 0, the other slider bar can not move and touch.😂
 
 
 
 ##Contact
-[nueneed@gmail.com](nueneed@gmail.com)
+<neuneed@gmail.com>
 
 ##License
 MIT-License
