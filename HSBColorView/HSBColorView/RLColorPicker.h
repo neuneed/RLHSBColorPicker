@@ -40,7 +40,7 @@
 
 #warning bug: something wrong when Hue or Alpha value =0, so do not add alpha slider (lee)
 /**
- *  nit the three HSB slider view contain 'Alpha slider'
+ *  init the three HSB slider view contain 'Alpha slider'
  *
  *  @param color :if color is nil,define is red.
  *  @param rect  :the three slider view rect. And rect's height need >= 28*4 to show all view.
