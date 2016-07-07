@@ -10,7 +10,7 @@
 
 @interface RLColorGradient : UIControl
 
-- (id)initWithFrame:(CGRect)frame gradientArray:(NSArray *)colors;
+- (instancetype)initWithFrame:(CGRect)frame gradientArray:(NSArray *)colors;
 @property (nonatomic ,strong) NSArray * gradientColors;
 
 

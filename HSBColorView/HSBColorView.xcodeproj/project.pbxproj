@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				9BA154FB1D2665FB00813EB9 /* icon */,
-				9B092F0D1D25297F00B5EDD8 /* New */,
+				9B092F0D1D25297F00B5EDD8 /* RLHSBColorPicker */,
 				9B092EE61D24D55500B5EDD8 /* AppDelegate.h */,
 				9B092EE71D24D55500B5EDD8 /* AppDelegate.m */,
 				9B092EE91D24D55500B5EDD8 /* ViewController.h */,
@@ -97,7 +97,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9B092F0D1D25297F00B5EDD8 /* New */ = {
+		9B092F0D1D25297F00B5EDD8 /* RLHSBColorPicker */ = {
 			isa = PBXGroup;
 			children = (
 				9B092F0E1D25299200B5EDD8 /* RLRoundView.h */,
@@ -109,7 +109,7 @@
 				9B092F1A1D26170400B5EDD8 /* RLColorPicker.h */,
 				9B092F1B1D26170400B5EDD8 /* RLColorPicker.m */,
 			);
-			name = New;
+			name = RLHSBColorPicker;
 			sourceTree = "<group>";
 		};
 		9BA154FB1D2665FB00813EB9 /* icon */ = {

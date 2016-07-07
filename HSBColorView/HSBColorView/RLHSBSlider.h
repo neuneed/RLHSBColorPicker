@@ -19,7 +19,7 @@ typedef enum {
     HSBColorTypeHue,
     HSBColorTypeSat,
     HSBColorTypeBri,
-    HSBColorTypeAlpha
+    HSBColorTypeAlpha,
 } HSBColorType;
 
 
@@ -33,11 +33,10 @@ typedef enum {
 
 @interface RLHSBSlider : UIControl
 
-- (id)initWithFrame:(CGRect)frame sliderColorType:(HSBColorType)type withColor:(UIColor *)color;
+- (instancetype)initWithFrame:(CGRect)frame sliderColorType:(HSBColorType)type withColor:(UIColor *)color;
 @property (nonatomic ,strong) RLRoundView * roundView;
 @property (nonatomic ,strong) RLColorGradient * gradientView;
 
-@property (nonatomic ,strong) UIColor * sliderColor;
 @property (nonatomic ,assign) CGFloat sliderValue;
 
 @property (weak, nonatomic) id<RLSlideValueChangeDelegate> sliderDelegate;

@@ -12,7 +12,7 @@
 
 @protocol RLColorPickerDelegate <NSObject>
 
--(void)getPickerColor: (UIColor *)color;
+-(void)getPickerColor: (UIColor *)color formPicker: (UIView *)picker;
 
 @end
 
@@ -21,8 +21,32 @@
 @property (nonatomic ,strong) RLHSBSlider * slider_h;
 @property (nonatomic ,strong) RLHSBSlider * slider_s;
 @property (nonatomic ,strong) RLHSBSlider * slider_b;
+@property (nonatomic ,strong) RLHSBSlider * slider_a;
 
 @property (weak, nonatomic) id<RLColorPickerDelegate> delegate;
-- (id)initWithColor :(UIColor *)color withFrame:(CGRect)rect;
+
+
+/**
+ *  init the three HSB slider view.
+ *
+ *  @param color :if color is nil,define is red.
+ *  @param rect  :the three slider view rect. And rect's height need >= 28*3 to show all view.
+ *
+ *  @return view
+ */
+- (instancetype)initWithColor :(UIColor *)color withFrame:(CGRect)rect;
+
+
+
+#warning bug: something wrong when Hue or Alpha value =0, so do not add alpha slider (lee)
+/**
+ *  nit the three HSB slider view contain 'Alpha slider'
+ *
+ *  @param color :if color is nil,define is red.
+ *  @param rect  :the three slider view rect. And rect's height need >= 28*4 to show all view.
+ *
+ *  @return view
+ */
+- (instancetype)initWithColorContainAlpha :(UIColor *)color withFrame:(CGRect)rect;
 
 @end

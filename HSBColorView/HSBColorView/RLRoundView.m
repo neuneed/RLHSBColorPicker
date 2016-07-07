@@ -11,25 +11,25 @@
 
 
 @implementation RLRoundView
--(id)initWithFrame:(CGRect)frame
+-(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.93 alpha:1];
+        self.backgroundColor = [UIColor colorWithHue:0.0f saturation:0.0f brightness:0.93f alpha:1.0f];
 
         // border radius
-        [self.layer setCornerRadius:frame.size.width/2];
+        [self.layer setCornerRadius:CGRectGetWidth(frame)/2];
         
-        // border
-//        [self.layer setBorderColor:[UIColor lightGrayColor].CGColor];
-//        [self.layer setBorderWidth:1.0f];
+        //border
+        [self.layer setBorderColor:[UIColor colorWithHue:0.0f saturation:0.0f brightness:0.89f alpha:1.0f].CGColor];
+        [self.layer setBorderWidth:.5f];
         
         // drop shadow
-        [self.layer setShadowColor:[UIColor colorWithHue:0 saturation:0 brightness:0.15 alpha:0.5].CGColor];
-        [self.layer setShadowOpacity:0.8];
-        [self.layer setShadowRadius:3.0];
-        [self.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
+        [self.layer setShadowColor:[UIColor colorWithHue:0.0f saturation:0.0f brightness:0.15f alpha:0.5f].CGColor];
+        [self.layer setShadowOpacity: 0.8f];
+        [self.layer setShadowRadius: 2.0f];
+        [self.layer setShadowOffset:CGSizeMake(2.0f, 2.0f)];
         
     }
     return self;

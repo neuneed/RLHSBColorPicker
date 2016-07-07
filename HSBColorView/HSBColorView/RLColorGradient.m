@@ -15,7 +15,7 @@
 @implementation RLColorGradient
 
 
-- (id)initWithFrame:(CGRect)frame gradientArray:(NSArray *)colors
+- (instancetype)initWithFrame:(CGRect)frame gradientArray:(NSArray *)colors
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -27,24 +27,14 @@
         self.layer.borderWidth = .5f;
         self.layer.borderColor = [UIColor colorWithHue:0 saturation:0 brightness:0.15 alpha:0.1].CGColor;
         self.gradientColors = colors;
+
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-//    H 0 — 360 色相 Hue
-//    S 0 - 1 饱和度 Saturation
-//    B 0 - 1 亮度 Brightness
     [super drawRect:rect];
-
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.bounds;
-    gradient.colors = self.gradientColors;
-    gradient.startPoint = CGPointMake(0, 0);
-    gradient.endPoint   = CGPointMake(1, 0);
-    [self.layer insertSublayer:gradient atIndex:0];
-
 }
 
 - (void)setGradientColors:(NSArray *)gradientColors
@@ -59,15 +49,12 @@
     }
     [layerToRemove removeFromSuperlayer];
     
-
     CAGradientLayer *newLayer = [CAGradientLayer layer];
     newLayer.frame = self.bounds;
     newLayer.colors = _gradientColors;
     newLayer.startPoint = CGPointMake(0, 0);
     newLayer.endPoint   = CGPointMake(1, 0);
     [self.layer insertSublayer:newLayer atIndex:0];
-
-    
 }
 
 
