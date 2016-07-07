@@ -1,10 +1,7 @@
 # RLHSBColorPicker
 `RLHSBColorPicker` is a HSBA color picker like sip color app.
 
-`Color picker` 
-`Color slider`
-`HSB slier`
-`HSBA picker`
+######`ColorPicker``ColorSlider``HSBSlider``HSBAPicker`
 
 
 ####Demo gif
