@@ -38,9 +38,9 @@ typedef enum {
 @property (nonatomic ,strong) RLColorGradient * gradientView;
 
 @property (nonatomic ,assign) CGFloat sliderValue;
-
 @property (weak, nonatomic) id<RLSlideValueChangeDelegate> sliderDelegate;
 
 -(void)setNewColorToDisplay:(UIColor *)color;
+-(void)moveSliderByValue: (CGFloat)value;
 
 @end

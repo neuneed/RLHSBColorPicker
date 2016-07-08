@@ -12,7 +12,7 @@
 
 @protocol RLColorPickerDelegate <NSObject>
 
--(void)getPickerColor: (UIColor *)color formPicker: (UIView *)picker;
+-(void)getPickerColor: (UIColor *)color formPicker:(UIView *)picker toTargetView:(UIView *)targetView;
 
 @end
 
@@ -24,6 +24,7 @@
 @property (nonatomic ,strong) RLHSBSlider * slider_a;
 
 @property (weak, nonatomic) id<RLColorPickerDelegate> delegate;
+@property (weak, nonatomic) UIView * targetView;
 
 
 /**

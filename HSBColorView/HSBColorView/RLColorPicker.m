@@ -51,6 +51,17 @@
     
     CGFloat sliderHeight = contain? (self.frame.size.height-10)/4: (self.frame.size.height-10)/3;
     
+    if (slider_h && slider_s && slider_h)
+    {
+        CGFloat h,s,b,a;
+        [color getHue:&h saturation:&s brightness:&b alpha:&a];
+
+        [slider_h moveSliderByValue:h];
+        [slider_s moveSliderByValue:s];
+        [slider_b moveSliderByValue:b];
+        return;
+    }
+    
     slider_h = [[RLHSBSlider alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, sliderHeight) sliderColorType:HSBColorTypeHue withColor:color];
     slider_h.sliderDelegate = self;
     [self addSubview: slider_h];
@@ -71,6 +82,12 @@
     }
 }
 
+- (void)setTargetView:(UIView *)targetView
+{
+    _targetView = targetView;
+    [self setupSliderViewContainAlpha:NO withColor:targetView.backgroundColor];
+}
+
 - (void)colorValueChange:(float)value fromType:(HSBColorType)type
 {
     UIColor * color;
@@ -80,7 +97,7 @@
         case HSBColorTypeHue:
             
             //color delegate
-            [self.delegate getPickerColor:[UIColor colorWithHue:value saturation:slider_s.sliderValue brightness:slider_b.sliderValue alpha:alpha] formPicker:self];
+            [self.delegate getPickerColor:[UIColor colorWithHue:value saturation:slider_s.sliderValue brightness:slider_b.sliderValue alpha:alpha] formPicker:self toTargetView:_targetView];
             //change other slider color
             color = [UIColor colorWithHue:value saturation:slider_s.sliderValue brightness:slider_b.sliderValue alpha:alpha];
             [slider_s setNewColorToDisplay:color];
@@ -93,7 +110,7 @@
 
         case HSBColorTypeSat:
             
-            [self.delegate getPickerColor:[UIColor colorWithHue:slider_h.sliderValue saturation:value brightness:slider_b.sliderValue alpha:alpha] formPicker:self];
+            [self.delegate getPickerColor:[UIColor colorWithHue:slider_h.sliderValue saturation:value brightness:slider_b.sliderValue alpha:alpha] formPicker:self toTargetView:_targetView];
             color = [UIColor colorWithHue:slider_h.sliderValue saturation:value brightness:slider_b.sliderValue alpha:alpha];
             [slider_h setNewColorToDisplay:color];
             [slider_b setNewColorToDisplay:color];
@@ -105,7 +122,7 @@
 
         case HSBColorTypeBri:
             
-            [self.delegate getPickerColor:[UIColor colorWithHue:slider_h.sliderValue saturation:slider_s.sliderValue brightness:value alpha:alpha] formPicker:self];
+            [self.delegate getPickerColor:[UIColor colorWithHue:slider_h.sliderValue saturation:slider_s.sliderValue brightness:value alpha:alpha] formPicker:self toTargetView:_targetView];
             color = [UIColor colorWithHue:slider_h.sliderValue saturation:slider_s.sliderValue brightness:value alpha:alpha];
             [slider_h setNewColorToDisplay:color];
             [slider_s setNewColorToDisplay:color];
@@ -119,7 +136,7 @@
             
             if (self.containAlpha)
             {
-                [self.delegate getPickerColor:[UIColor colorWithHue:slider_h.sliderValue saturation:slider_s.sliderValue brightness:slider_b.sliderValue alpha:value] formPicker:self];
+                [self.delegate getPickerColor:[UIColor colorWithHue:slider_h.sliderValue saturation:slider_s.sliderValue brightness:slider_b.sliderValue alpha:value] formPicker:self toTargetView:_targetView];
                 color = [UIColor colorWithHue:slider_h.sliderValue saturation:slider_s.sliderValue brightness:slider_b.sliderValue alpha:value];
                 [slider_h setNewColorToDisplay:color];
                 [slider_s setNewColorToDisplay:color];

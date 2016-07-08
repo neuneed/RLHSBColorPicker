@@ -11,7 +11,8 @@
 @interface ViewController ()<RLColorPickerDelegate>
 {
     RLColorPicker * colorPicker;
-    UIView * showView;
+    UIButton * leftView;
+    UIButton * rightView;
 }
 @end
 
@@ -33,43 +34,52 @@
     [self.view addSubview:iconLabel];
     
     
-    UIColor * defineColor = [UIColor colorWithRed:50.f/255.f green:134.f/255.f blue:148.f/255.f alpha:1.0f];
+    UIColor * defineColor = [UIColor grayColor];
     colorPicker  = [[RLColorPicker alloc]initWithColor:nil withFrame:CGRectMake(0, 380, self.view.frame.size.width, 180)];
     colorPicker.delegate = self;
-    colorPicker.tag = 10000;
     [self.view addSubview:colorPicker];
     
-    showView = [[UIView alloc]init];
-    [showView setBackgroundColor:defineColor];
-    [self.view addSubview:showView];
-    [showView setCenter:CGPointMake(self.view.center.x, self.view.center.y -110)];
-    [showView setBounds:CGRectMake(0, 0, 200, 200)];
-    showView.layer.masksToBounds = YES;
-    showView.layer.cornerRadius = showView.frame.size.width/2;
-    showView.layer.borderColor = [UIColor colorWithHue:0 saturation:0 brightness:0.93 alpha:1].CGColor;
-    showView.layer.borderWidth = 1.0f;
+    leftView = [[UIButton alloc]init];
+    [leftView setBackgroundColor:defineColor];
+    [self.view addSubview:leftView];
+    [leftView setCenter:CGPointMake(100, self.view.center.y -110)];
+    [leftView setBounds:CGRectMake(0, 0, 200, 200)];
+    leftView.layer.masksToBounds = YES;
+    leftView.layer.cornerRadius = leftView.frame.size.width/2;
+    leftView.layer.borderColor = [UIColor colorWithHue:0 saturation:0 brightness:0.93 alpha:1].CGColor;
+    leftView.layer.borderWidth = 1.0f;
+    [leftView addTarget:self action:@selector(leftViewClick:) forControlEvents:UIControlEventTouchUpInside];
     
-//    RLColorPicker *colorPicker2  = [[RLColorPicker alloc]initWithColorContainAlpha:[UIColor orangeColor] withFrame:CGRectMake(0, 380 + 160, self.view.frame.size.width, 180)];
-//    [colorPicker2 setBackgroundColor:[UIColor orangeColor]];
-//    colorPicker2.delegate = self;
-//    [self.view addSubview:colorPicker2];
+    rightView = [[UIButton alloc]init];
+    [rightView setBackgroundColor:defineColor];
+    [self.view addSubview:rightView];
+    [rightView setCenter:CGPointMake(self.view.frame.size.width-100, self.view.center.y -110)];
+    [rightView setBounds:CGRectMake(0, 0, 200, 200)];
+    rightView.layer.masksToBounds = YES;
+    rightView.layer.cornerRadius = rightView.frame.size.width/2;
+    rightView.layer.borderColor = [UIColor colorWithHue:0 saturation:0 brightness:0.93 alpha:1].CGColor;
+    rightView.layer.borderWidth = 1.0f;
+    [rightView addTarget:self action:@selector(rightViewClick:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
--(void)getPickerColor:(UIColor *)color formPicker:(UIView *)picker
+- (void)leftViewClick: (UIButton *)sender
 {
-    if (picker.tag == 10000)
-    {
-        [showView setBackgroundColor:color];
-    }
-    else
-    {
-        
-        CGFloat h, s,b ,a;
-        [color getHue:&h saturation:&s brightness:&b alpha:&a];
-        UIColor * newColor = [UIColor colorWithHue:1-h/2 saturation:1-s/2 brightness:1-b/2 alpha:1-a/2];
-        [showView setBackgroundColor:newColor];
-    }
-    
+    [sender setBackgroundColor:[UIColor orangeColor]];
+    colorPicker.targetView = sender;
+    [rightView setBackgroundColor:[UIColor grayColor]];
+}
+
+- (void)rightViewClick: (UIButton *)sender
+{
+    [sender setBackgroundColor:[UIColor colorWithHue:0.3 saturation:0.9 brightness:0.6 alpha:1]];
+    colorPicker.targetView = sender;
+    [leftView setBackgroundColor:[UIColor grayColor]];
+}
+
+- (void)getPickerColor:(UIColor *)color formPicker:(UIView *)picker toTargetView:(UIView *)targetView
+{
+    [targetView setBackgroundColor:color];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -50,7 +50,7 @@
     {
         case HSBColorTypeHue:
             
-            self.sliderValue = hue;
+//            self.sliderValue = hue;
 
             gradientColorArray = @[(id) [[UIColor colorWithHue:0.0 saturation:saturation brightness:brightness alpha:alpha] CGColor],
                                    (id) [[UIColor colorWithHue:0.2 saturation:saturation brightness:brightness alpha:alpha] CGColor],
@@ -62,7 +62,7 @@
             break;
         case HSBColorTypeSat:
             
-            self.sliderValue = saturation;
+//            self.sliderValue = saturation;
 
             gradientColorArray = @[(id) [[UIColor colorWithHue:hue saturation:0.0 brightness:brightness alpha:alpha] CGColor],
                                    (id) [[UIColor colorWithHue:hue saturation:0.2 brightness:brightness alpha:alpha] CGColor],
@@ -75,7 +75,7 @@
         
         case HSBColorTypeBri:
             
-            self.sliderValue = brightness;
+//            self.sliderValue = brightness;
             
             gradientColorArray = @[(id) [[UIColor colorWithHue:hue saturation:saturation brightness:0.0 alpha:alpha] CGColor],
                                    (id) [[UIColor colorWithHue:hue saturation:saturation brightness:0.2 alpha:alpha] CGColor],
@@ -118,10 +118,8 @@
 
 -(void)dragging:(UIPanGestureRecognizer *)gesture
 {
-    NSLog(@"pan");
     if ([gesture state] == UIGestureRecognizerStateBegan)
     {
-        NSLog(@"pan began");
     }
     else if([gesture state] == UIGestureRecognizerStateChanged)
     {
@@ -161,7 +159,19 @@
 -(void)setColorWithValue:(float)percent
 {
     self.sliderValue = percent;
-    [self.sliderDelegate colorValueChange:percent fromType:self.sliderType];
+    [self.sliderDelegate colorValueChange:_sliderValue fromType:self.sliderType];
+
+}
+
+-(void)moveSliderByValue: (CGFloat)value
+{
+    [self setColorWithValue:value];
+    
+    [UIView animateWithDuration:0.4f animations:^{
+        self.roundView.center = CGPointMake(GRADIENT_X  + value * self.gradientView.frame.size.width, self.frame.size.height/2);
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 -(void)setNewColorToDisplay:(UIColor *)color
