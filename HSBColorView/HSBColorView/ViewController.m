@@ -35,7 +35,7 @@
     
     
     UIColor * defineColor = [UIColor grayColor];
-    colorPicker  = [[RLColorPicker alloc]initWithColor:nil withFrame:CGRectMake(0, 380, self.view.frame.size.width, 180)];
+    colorPicker  = [[RLColorPicker alloc]initWithColor:[UIColor blueColor] withFrame:CGRectMake(0, 380, self.view.frame.size.width, 180)];
     colorPicker.delegate = self;
     [self.view addSubview:colorPicker];
     
@@ -60,26 +60,23 @@
     rightView.layer.borderColor = [UIColor colorWithHue:0 saturation:0 brightness:0.93 alpha:1].CGColor;
     rightView.layer.borderWidth = 1.0f;
     [rightView addTarget:self action:@selector(rightViewClick:) forControlEvents:UIControlEventTouchUpInside];
+    [rightView setTitle:@"Set Color" forState:UIControlStateNormal];
     
 }
 
 - (void)leftViewClick: (UIButton *)sender
 {
-    [sender setBackgroundColor:[UIColor orangeColor]];
-    colorPicker.targetView = sender;
-    [rightView setBackgroundColor:[UIColor grayColor]];
+    
 }
 
 - (void)rightViewClick: (UIButton *)sender
 {
-    [sender setBackgroundColor:[UIColor colorWithHue:0.3 saturation:0.9 brightness:0.6 alpha:1]];
-    colorPicker.targetView = sender;
-    [leftView setBackgroundColor:[UIColor grayColor]];
+    [colorPicker setCustomColor:[UIColor orangeColor]];
 }
 
-- (void)getPickerColor:(UIColor *)color formPicker:(UIView *)picker toTargetView:(UIView *)targetView
+-(void)getPickerColor: (UIColor *)color
 {
-    [targetView setBackgroundColor:color];
+    [leftView setBackgroundColor:color];
 }
 
 - (void)didReceiveMemoryWarning {
