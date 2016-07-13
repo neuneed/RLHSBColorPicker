@@ -25,6 +25,10 @@
 
 @property (weak, nonatomic) id<RLColorPickerDelegate> delegate;
 
+
+/**
+ *  init color or change color
+ */
 @property (nonatomic ,strong) UIColor * customColor;
 
 

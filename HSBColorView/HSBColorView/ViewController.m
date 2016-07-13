@@ -12,7 +12,7 @@
 {
     RLColorPicker * colorPicker;
     UIButton * leftView;
-    UIButton * rightView;
+    UIButton * resetButton;
 }
 @end
 
@@ -34,15 +34,15 @@
     [self.view addSubview:iconLabel];
     
     
-    UIColor * defineColor = [UIColor grayColor];
-    colorPicker  = [[RLColorPicker alloc]initWithColor:[UIColor blueColor] withFrame:CGRectMake(0, 380, self.view.frame.size.width, 180)];
+    UIColor * defineColor = [UIColor cyanColor];
+    colorPicker  = [[RLColorPicker alloc]initWithColor:defineColor withFrame:CGRectMake(0, 380, self.view.frame.size.width, 180)];
     colorPicker.delegate = self;
     [self.view addSubview:colorPicker];
     
     leftView = [[UIButton alloc]init];
     [leftView setBackgroundColor:defineColor];
     [self.view addSubview:leftView];
-    [leftView setCenter:CGPointMake(100, self.view.center.y -110)];
+    [leftView setCenter:CGPointMake(self.view.center.x, self.view.center.y -110)];
     [leftView setBounds:CGRectMake(0, 0, 200, 200)];
     leftView.layer.masksToBounds = YES;
     leftView.layer.cornerRadius = leftView.frame.size.width/2;
@@ -50,17 +50,17 @@
     leftView.layer.borderWidth = 1.0f;
     [leftView addTarget:self action:@selector(leftViewClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    rightView = [[UIButton alloc]init];
-    [rightView setBackgroundColor:defineColor];
-    [self.view addSubview:rightView];
-    [rightView setCenter:CGPointMake(self.view.frame.size.width-100, self.view.center.y -110)];
-    [rightView setBounds:CGRectMake(0, 0, 200, 200)];
-    rightView.layer.masksToBounds = YES;
-    rightView.layer.cornerRadius = rightView.frame.size.width/2;
-    rightView.layer.borderColor = [UIColor colorWithHue:0 saturation:0 brightness:0.93 alpha:1].CGColor;
-    rightView.layer.borderWidth = 1.0f;
-    [rightView addTarget:self action:@selector(rightViewClick:) forControlEvents:UIControlEventTouchUpInside];
-    [rightView setTitle:@"Set Color" forState:UIControlStateNormal];
+    resetButton = [[UIButton alloc]init];
+    [resetButton setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
+    [self.view addSubview:resetButton];
+    [resetButton setCenter:CGPointMake(self.view.center.x, CGRectGetMaxY(colorPicker.frame)+ 80)];
+    [resetButton setBounds:CGRectMake(0, 0, 100, 50)];
+    resetButton.layer.masksToBounds = YES;
+    resetButton.layer.cornerRadius = 5;
+    resetButton.layer.borderColor = [UIColor colorWithHue:0 saturation:0 brightness:0.93 alpha:1].CGColor;
+    resetButton.layer.borderWidth = 1.0f;
+    [resetButton addTarget:self action:@selector(resetButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [resetButton setTitle:@"reset Color" forState:UIControlStateNormal];
     
 }
 
@@ -69,7 +69,7 @@
     
 }
 
-- (void)rightViewClick: (UIButton *)sender
+- (void)resetButtonClick: (UIButton *)sender
 {
     [colorPicker setCustomColor:[UIColor orangeColor]];
 }
