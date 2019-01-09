@@ -1,7 +1,7 @@
 # RLHSBColorPicker
 `RLHSBColorPicker` is a HSBA color picker like sip color app.
 
-##Screenshot
+## Screenshot
 
 ![RLHSBColorPicker Screenshot](HSBColorView/demo.gif)
 
@@ -9,7 +9,7 @@
 Add the `RLRoundView` `RLHSBSlider``RLColorPicker` `RLColorGradient` to your proj.
 
 
-##Example usage
+## Example usage
 
 To add a color picker view:
 
@@ -35,13 +35,13 @@ To get color:
 
 ```
 
-##Existing bug: 
+## Existing bug: 
 > When add the alpha slider bar, if the hue or alpha value equle to 0, the other slider bar can not move and touch.😂
 
 
 
-##Contact
+## Contact
 <neuneed@gmail.com>
 
-##License
+## License
 MIT-License
